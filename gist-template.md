@@ -9,31 +9,36 @@ REGEX can be used in countless situations which makes REGEX an important soft sk
 
 Today I will be using the REGEX below to demonstrate how these sereies of characters are used to verify an email address.
 
-Regex to Verify an Email Address: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
+Regex to Verify an Email Address: 
+```
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i
+```
 
 First, here are some key elements of REGEX:
 
 ## Table of Contents
 
 - [Regex Componets](#regex-components)
+- [Anchors](#anchors)
+- [Capture Groups](#capture-groups)
+- [Character Classes](#character-classes)
+- [Literal Characters](#literal-characters)
+- [Quantifiers](#quantifiers)
+- [Flags](#flags)
 
-## Regex Components
+
+### Regex Components
 
 ```
  / [inset REGEX here] /  
 ```
 Regex is denoted by two forward slashes and the regular expression is placed between both forward slashes.
 
-LITERAL CHARACTERS
-- Literal Characters in REGEX are the letters and numbers that are being searched for in a body of text/code.
+ANCHORS
+- Anchors specify the position where in the body of text/code should occor. These anchors are '^' or '$'.
 
-METACHARATERS
-- Metacharacters are symbols that have a specific purpose in REGEX
-Here are some exampls of metacharacters:
-```
- . , * , + , ? , | , ()
-```
-Above the metacharacters are seperated by commas the functionality of these metacharacters will be shown below.
+CAPTURE GROUPS
+- Capture groups are denoted by '()' and are used to isolate and extract specific characters from the body of text/code. 
 
 CHARACTER CLASSES
 - Charcater classes are used in REGEX to match literal characters from a given metric as shown here: 
@@ -41,6 +46,20 @@ CHARACTER CLASSES
 ```
 [a-z], [0-9]
 ```
+LITERAL CHARACTERS
+- Literal Characters in REGEX are the letters, numbers, and symbols that are being searched for in a body of text/code. In this REGEX example 'birdhouse' is the literal character: 
+
+```
+\ birdhouse \
+```
+
+METACHARACTERS
+- Metacharacters are symbols that have a specific purpose in REGEX
+Here are some examples of metacharacters:
+```
+ . , * , + , ? , | , ()
+```
+Above the metacharacters are seperated by commas the functionality of some these metacharacters will be shown below.
 
 QUANTIFIERS
 - Quantifiers are used to specifiy and limit the amount of times a character or group should appear from the body of text/code. In the REGEX the 'n' is the minimum number or occurences and 'm' is the maximum limit of characters in a series of characters as shown here: 
@@ -49,91 +68,107 @@ QUANTIFIERS
 {n,m}
 ```
 
-ANCHORS
-- Anchors specify the position where in the body of text/code should occor. These anchors are '^' or '$'.
-
-CAPTURE GROUPS
-- Capture groups are denoted by '()' and are used to isolate and extract specific characters from the body of text/code. 
-
 
 FLAGS
 - Flags are specific criteria that you give to your REGEX so that the text body can display more specific elements to suit your specific needs. These are flags that are used in REGEX Global (g), Multiline (m), Unicode (u), and Sticky (y).
 
-
+---
+### REGEX EXAMPLE
 ```
- /. /
+/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/i
 ```
- Make the rest 
-
-```
- /? /
-```
- Make the the rest of possible pattern optional
-
-## Character Escapes
-
-```
- /w / 
-```
-The will match with any character, typically any letter in the alphabet
-
-```
- /d / 
-```
-
-```
- /s / 
-```
-This
+---
 
 ### Anchors
 
+There are two anchors being used in this example: 
 ```
  /^ / 
 ``` 
-This ANCHOR will demonstrate the beginning of a line of text/code in a body of text/code.
+This anchor will demonstrate the beginning of a line of text/code in a body of text/code.
 
 ```
- /$ / 
+ / $/ 
 ```
-This ANCHOR will demonstrate the end of a line of text/code in a body of text/code.
+This anchor will demonstrate the end of a line of text/code in a body of text/code.
 
+### Capture Groups
+There are three capture groups being used in this REGEX example: 
 ```
- /A / 
+Capture Group 1: ([a-z0-9_\.-]+)
 ```
-This ANCHOR will demonstare the beginning of an entire body of text/code.
-
 ```
- /Z / 
+Capture Group 2: ([\da-z\.-]+)
 ```
-This ANCHOR will demonstare the end of an entire body of text/code.
-
-
-### Quantifiers
-
-### Grouping Constructs
-
-### Bracket Expressions
+```
+Capture Group 3: ([a-z\.]{2,6})
+```
 
 ### Character Classes
+There are two character classes being used in this REGEX example: 
+```
+Character Class 1: a-z
+```
+As you can see there are three occurances of this class in this REGEX.
+```
+Character Class 2: 0-9
+```
+This class occurs only onces in the REGEX.
 
-[ | ] : Like in JavaScript, " | " denotes and 'or' argument
+### Literal Characters
+There are four literal characters being matched in the REGEX example:
+```
+Literal Character 1: @ (i.e. At Symbol)
+```
+```
+Literal Character 2: _ (i.e. Underscord)
+```
+```
+Literal Character 3: - (i.e. Hyphen)
+```
+```
+Literal Character 4: \. (i.e. Period)
+```
+The period is used as a metacharacter to denote any character when used on its own in REGEX or can be used to match anything after a specific REGEX parameter. This REGEX will find every instance of the literal character 'bird' in REGEX:
+```
+\ bird. \
+```
+By adding the period, REGEX will find every instance of 'bird' even if it's within a compound word like 'birdhouse' as listed in the example of literal characters above. 
+
+### Quantifiers
+There are two quantifiers being used in this REGEX example
+```
+Quantifier 1: + (i.e. The plus/addition symbol)
+```
+The addition symbol matches the previous REGEX and expects more captured groups if needed.
+```
+Quantifier 2: {2,6}
+```
+This quantifier is expecting a captured group with a minimum of two characters but no more than six characters will be selected in the REGEX.
 
 ### Flags
-
-One example of a is Case-Insensitive (i), this flag will match characters whether or not within the body of text is in uppercase or lower case.
-
+There is only one flag being used in this REGEX example:
 ```
-\ birdhouse \i
+Flag: i
 ```
-This REGEX will find all instances of 'birdhouse' even if they're typed like this: Birdhouse, BirdHouse, BIRDHOUSE, BirdhousE
-
-### Character Escapes
+This flag denotes case insensitive, simply saying that the REGEX will look for any alphabetic characters regardless of them being uppercase or lowercase. 
 
 ## Author
 
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+Carlos E. De La Torre
+
+Junior Full-Stack Web Developer
+
+[GitHub Account](https://github.com/crlsedlt42)
 
 ## Resources
 
 https://regexr.com/
+
+https://regex101.com/
+
+[ChatGPT](https://chat.openai.com/)
+
+[Learn Regular Expressions In 20 Minutes](https://www.youtube.com/watch?v=rhzKDrUiJVk&t=3s)
+
+[How to Write Regular Expressions Without Going Crazy (Beginners Tutorial)](https://www.youtube.com/watch?v=saABx34CsBE&t=575s)
